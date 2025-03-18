@@ -108,7 +108,7 @@ document.getElementById("loginform").onsubmit = function(event) {
 
         // Redirect Admin to Home Page
         setTimeout(() => {
-            window.location.href = "/pages/Home-Page/index.html";
+            window.location.href = document.getElementById("home").href;
         }, 2000);
         return; // Stop further execution
     } 
