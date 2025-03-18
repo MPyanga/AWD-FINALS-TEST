@@ -108,7 +108,7 @@ document.getElementById("loginform").onsubmit = function(event) {
 
         // Redirect Admin to Home Page
         setTimeout(() => {
-            window.location.href = document.getElementById("home").href;
+            window.location.href = document.getElementById("admin").href;
         }, 2000);
         return; // Stop further execution
     } 
@@ -122,7 +122,7 @@ document.getElementById("loginform").onsubmit = function(event) {
             showConfirmButton: false
         });
         setTimeout(() => {
-                window.location.href = "../../pages/About-Page/index.html";
+            window.location.href = document.getElementById("default").href;
                   }, 2000);
 
         document.getElementById("loginModal").style.display = "none";
