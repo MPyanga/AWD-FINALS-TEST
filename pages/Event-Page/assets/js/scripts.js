@@ -53,3 +53,35 @@ window.addEventListener('scroll', function() {
         }
     });
 });
+
+document.getElementById("click").addEventListener("click", function(event) {
+    let button = event.target; // Get clicked button
+    let buttonId = button.id;
+
+    // Ignore clicks on <nav> itself
+    if (button.tagName !== "BUTTON") return;
+
+    // Get button background color and apply to container
+    let color = window.getComputedStyle(button).backgroundColor;
+    document.getElementById("container").style.backgroundColor = color;
+
+    // Hide all content
+    document.querySelectorAll("#container > div").forEach(div => {
+        div.style.display = "none";
+    });
+
+    // Show the corresponding content based on clicked button
+    let contentMap = {
+        "btn1": "content1",
+        "btn2": "content2",
+        "btn3": "content3",
+        "btn4": "content4",
+        "btn5": "content5"
+    };
+
+    if (contentMap[buttonId]) {
+        let contentDiv = document.getElementById(contentMap[buttonId]);
+        if (contentDiv) contentDiv.style.display = "block";
+    }
+});
+
