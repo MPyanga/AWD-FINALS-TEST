@@ -250,7 +250,7 @@ header.scrolled{
                 position: absolute;
                 height: 40vh;
                 align-self: flex-end;
-                transform: translateY(-15rem);
+                transform: translateY(-18rem);
             }
             
             & > h1{

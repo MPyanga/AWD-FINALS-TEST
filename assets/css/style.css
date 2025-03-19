@@ -1,112 +1,19 @@
-.modal {
-display: flex;
-flex-direction: row;
-height: 80vh;
-width: 70%;
-justify-content: center;
-align-items: center;
-/* border-radius: 30px; */
-/* background-image: url(../img/bg.jpg);
-background-size: cover;
-background-position: center; */
-overflow: hidden;
-margin-bottom: 1rem;
-  & > .left{
-    display: flex;
-    height: 100%;
-    width: 50%;
-    /* background-color: rgba(168, 166, 166, 0.424); */
-    flex-direction: column;
-    background-color: rgb(255, 213, 0);
-    justify-items: center;
-    text-align: center;
-
-    & > h1{
-      font-weight: 900;
-      font-size: 2rem;
-      font-family: "Bungee", sans-serif;
-      color: lightcoral;
-        }
-
-    & > .modal-content {
-      display: flex;
-      flex-direction: column;
-      border-radius: 8px;
-      width: 100%;
-      height: 80%;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      & > i{
-        font-size: 2rem;
-        padding: 25px;
-        border-radius: 50px;
-        color: white;
-        border: 1px solid white;
-      }
-      & > form {
-        display: flex;
-        flex-direction: column;
-      }
-      
-      & > form > input {
-        padding: 10px;
-        margin: 5px 0;
-      }
-      
-      & > form > button {
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-      
-      & > form button:hover {
-        background-color: #45a049;
-      }
-      & > p{
-        color: red; 
-        display: none;
-      }
-    } 
-  }
-
-  & > .right{
-    display: flex;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    justify-content: space-between;
-    border-left: 2px solid black;
-    background-image: url(../img/snooze-mode-love-snooze-mode-3.svg);
-    background-size: cover;
-    background-position: center;
-   
-   
-   
-    
-    & > img{
-      display: flex;
-      height: 30vh;
-    }
-  }
-} 
  
 
 body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightyellow;
+  background-color: rgb(252, 252, 205);
+  /* background: radial-gradient(circle, rgb(48, 45, 28) 0%, rgb(20, 20, 20) 100%);   */
   margin: 0;
   height: 100vh;
   width: 100%;
   flex-direction: column;
-  /* background-image: url(../img/pinterest4.jpg);
-  background-size: cover;
-  background-position: center; */
+  /* background-image: url(../img/vecteezy_realistic-smoke-effect_21104096.png);
+  background-size:auto;
+  background-position:center; */
+  gap: 1rem;
 
   & > h1 {
     /* color: black; */
@@ -143,11 +50,174 @@ body{
     }
   }
 }
+
+.modal {
+display: flex;
+flex-direction: row;
+height: 75vh;
+width: 70%;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+margin-bottom: 1rem;
+border: 2px solid black;
+
+& > .left{
+  display: flex;
+  width: 55%;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+  background-image: url(../img/snooze-mode-love-snooze-mode-3.svg);
+  background-size: cover;
+  
+  & > img{
+    display: flex;
+    height: 30vh;
+  }
+}
+& > .right{
+    display: flex;
+    height: 100%;
+    width:45%;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(255, 213, 0);
+    justify-content: center;
+
+    & > h1{
+      font-weight: 900;
+      font-size: 2.5rem;
+      font-family: "Bungee", sans-serif;
+      color: rgb(31, 31, 31); /* Soft Red */
+      top: 0;
+    }
+    
+
+      & > .modal-content {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        height: 60%;
+        align-items: center;
+        justify-content: center;
+            background-color: #5454548d;
+
+      
+        & > b{
+          font-size: 15px;
+          color: rgb(23, 23, 21);
+          margin-bottom: 1rem;
+        }
+        
+        & > .createAccount-holder{
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          justify-content: center;
+          gap: 10px;
+
+          & > button{
+            border: none;
+            background-color: violet;
+          }
+        }
+
+      
+
+        & > form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          width: 100%;
+        
+          & > .input-holder {
+            display: flex;
+            line-height: 30px;
+            align-items: center;
+            position: relative;
+            max-width: 250px;
+          
+            & > i {
+              position: absolute;
+              left: 1rem;
+              fill: none;
+              width: 1rem;
+              height: 1rem;
+            }
+         & > input {
+            width: 100%;
+            height: 45px;
+            line-height: 30px;
+            padding: 0 1rem;
+            padding-left: 3rem;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            outline: none;
+            background-color: #5454548d;
+            color: #0d0c22;
+            transition: .5s ease;
+
+            &::placeholder{
+                color: #94a3b8;
+              }
+            
+              &:focus, &:hover {
+                outline: none;
+                border-color: rgba(129, 140, 248);
+                background-color: #fff;
+                box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+              }
+              
+          }
+
+          }
+          
+          
+          
+          
+          
+         
+
+        & > button {
+          padding: 10px;
+          background-color: rgba(255, 213, 0);
+          color: white;
+          border: none;
+          cursor: pointer; 
+          width: 13rem;
+          height: 3rem;
+
+          &:hover {
+            background-color: #45a049;
+          }
+        }
+        
+       
+    } 
+
+        & > p{
+          color: red; 
+          display: none;
+        }
+    
+  }
+}
+
+
+} 
+
  
 /* * , .modal{
   outline: 2px solid white;
 } */
 
+/* From Uiverse.io by ozgeozkaraa01 */ 
 
 
 /* & > h1{
