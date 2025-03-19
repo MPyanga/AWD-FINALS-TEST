@@ -96,14 +96,14 @@ document.getElementById("loginform").onsubmit = function(event) {
     // Retrieve stored accounts from local storage
     let storedUsers = JSON.parse(localStorage.getItem("users")) || {};
     if (username === "admin" && password === "123") {
-        Swal.fire({
-            title: "Login Successful!",
-            text: "Welcome, Admin!",
-            icon: "success",
-            timer: 2000,
-            showConfirmButton: false
-        });
-
+        // Swal.fire({
+        //     title: "Login Successful!",
+        //     text: "Welcome, Admin!",
+        //     icon: "success",
+        //     timer: 2000,
+        //     showConfirmButton: false
+        // });
+        document.getElementById("loader").style.display = "block"
         document.getElementById("loginModal").style.display = "none";
 
         // Redirect Admin to Home Page

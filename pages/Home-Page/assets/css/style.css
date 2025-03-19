@@ -1,5 +1,11 @@
+
+
 body{
-    background-color: rgb(252, 252, 205);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(252, 252, 205)!important;
     margin: 0;
 }
 
@@ -8,13 +14,15 @@ header {
     width: 100%;
     height: 10vh;
     position: fixed;
-    background-color: rgb(255, 255, 108);
+    background-color: seagreen;
+    /* background-color: rgb(255, 213, 0); */
     /* box-shadow: 1px 1px 15px rgb(255, 208, 1); */
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
     border-bottom: 3px solid  rgb(63, 63, 63);
-
+    top: 0;
+    
     & > a {
         text-decoration: none;
 
@@ -60,10 +68,11 @@ header {
         display: flex;
         gap: 2rem;
         margin-right: 1rem;  
+        align-items: center;
 
         & > .btn{
             display: flex;
-            background-color: rgb(198, 41, 41);
+            background-color: rgb(251, 149, 165);
             color: white;
             border-radius: 10px;
             width: 7rem;
@@ -90,18 +99,23 @@ header {
                 
                 & > button {
                     display: flex;
-                    color: rgb(63, 63, 63);
-                    height: 2rem;
+                    color: #B5E7A0; /* Light Green */
+                    height: 2.2rem;
                     width: 6rem;
                     gap: 10px;
                     justify-content: center;
                     align-items: center;
                     border: none;
                     background-color: transparent;
+                    font-weight: 700;
+                        
+            &:hover{
+                border-bottom: 3px solid lightgreen;
+            }
                 }
             }
 
-        & > button{
+        & > .hamburger{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -110,10 +124,10 @@ header {
         
         & > .btn:nth-child(6){
             display: flex;
-            background-color: rgb(5, 250, 9);
+            background-color: rgb(251, 149, 165);
             color: white;
             border-radius: 10px;
-            width: 7rem;
+            width: 4rem;
             height: 2.2rem;
             justify-content: center;
             align-items: center;
@@ -151,9 +165,9 @@ header {
 header.scrolled{
     background-color: rgb(255, 213, 0);
     box-shadow: none;
-
-    & > a> h1{
-        color: yellow;
+    
+    & > nav > a > button{
+        color: rgb(63, 63, 63);
     }
 
 }
@@ -164,7 +178,7 @@ header.scrolled{
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: lightcoral;
+    background-color: seagreen;
   }
   
   ::-webkit-scrollbar-thumb:hover {
@@ -172,7 +186,7 @@ header.scrolled{
   }
   
   ::-webkit-scrollbar-track {
-    background-color: lightpink;
+    background-color: rgb(255, 213, 0);
 }
 
 .section1{
@@ -184,7 +198,8 @@ header.scrolled{
     background-position: center; */
     flex-direction: row;
     align-items: end;
-    background-color: rgb(255, 213, 0);
+    background-color: seagreen;
+    /* background-color: rgb(255, 213, 0); */
     overflow: hidden;
 
     & > .left-container{
@@ -262,7 +277,8 @@ header.scrolled{
             }
     
             & > p{
-                color: rgb(63, 63, 63);
+                color: whitesmoke;
+                /* color: rgb(63, 63, 63); */
                 font-size: 1rem;
                 font-weight: 500;
                 font-family: "Playwrite DE VA", cursive;
@@ -331,13 +347,12 @@ header.scrolled{
     align-items: center;
     flex-direction: column;
     gap: 3rem;
-    background-color: rgb(255, 213, 0);
 
     & > h1{
         font-weight: 900;
-        color: rgb(63, 63, 63);
-
+        color: rgb(251, 149, 165);
     }
+    
     & > .card-holder{
         display: flex;
         flex-direction: row;
@@ -379,7 +394,8 @@ header.scrolled{
             }
 
             &:hover{
-                box-shadow: 1px 1px 10px rgb(31, 31, 31);
+                /* box-shadow: 1px 1px 10px rgb(63, 63, 63); */
+                border: 2px solid yellow;
 
                 & > .top{
                     & > img{
@@ -405,12 +421,12 @@ header.scrolled{
             justify-content: center;
             align-items: center;
             border: none;
-            border-radius: 20px;
-            background-color: yellow;   
+            /* border-radius: 30px; */
+            background-color: rgb(251, 149, 165);
             font-weight: 900;
-
+            border: 3px solid black;
                 &:hover{
-                    transform: scale(1.1);
+                    background-color: rgb(251, 149, 165);
                 }
             }
         }
@@ -419,15 +435,17 @@ header.scrolled{
 .section4{
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 120vh;
     width: 100%;
     justify-content: center;
     align-items: center;
     background-color: rgb(252, 252, 205);
     gap: 2rem;
-
+    padding-top: 2rem;
+ 
     & > h1{
         font-weight: 900;
+        color: black;
     }
 
     & > .container-holder{
@@ -486,20 +504,20 @@ header.scrolled{
     & > a{
         display: flex;
         text-decoration: none;
-        padding-top: 2rem;
+
        & > button{
         display: flex;
-        width: 12rem;
+        width: 14rem;
         height: 4rem;
         justify-content: center;
         align-items: center;
         border: none;
-        border-radius: 20px;
-        background-color: yellow;
+        background-color: rgb(255, 213, 0);
         font-weight: 900;
-        
+        border: 3px solid black;
+
             &:hover{
-                transform: scale(1.1);
+                background-color: rgb(255, 213, 0);
             }
         }
     }
@@ -513,9 +531,9 @@ header.scrolled{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(255, 213, 0);
-    gap: 4rem;
-  
+    /* background-color: rgb(255, 213, 0); */
+    gap: 3rem;
+
     
     & > h1{
         font-weight: 900;
@@ -524,80 +542,123 @@ header.scrolled{
     & > .container-holder{
         display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: center;
-        width: 100%;
-       
+        align-items: center;
+        width: 90%;
+        gap: 1rem;
+
         & > .left{
             display: flex;
-            width: 40%;
+            width: 60%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            /* background-image: url(../img/pngwing.com\ \(3\).png) ;
+            background-position: center;
+            background-size: cover; */
+
+            & > .container{
+                display: flex;
+                align-items: center;
+                border-radius: 30px;
+                border: 3px solid black;
+                flex-direction: row;
+                gap: 10px;
+                padding: 0;
+                border-left: none;
+
+                & > p {
+                    font-size: 18px;
+                } 
+            }
+            & > .container:nth-child(1){
+                background-color: rgb(255, 213, 0);
+                width: 20rem;
+                height: 10vh;
+
+                & > i{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 2rem;
+                    border: 4px solid black;
+                    height: 12vh;
+                    width: 5rem;
+                    border-radius: 40px;
+                    background-color: rgb(255, 213, 0);
+                }
+              
+            }
+
+            & > .container:nth-child(2){
+                display: flex;
+                width: 48rem;
+                height: 10vh;
+                background-color: rgb(255, 213, 0);
+
+                & > img{
+                    display: flex;
+                    height: 12vh;
+                    width: 5rem;
+                    border-radius: 50px;
+                    border: 4px solid black;
+                    background-color: rgb(255, 213, 0);
+                }
+            }
+
+            & > .container:nth-child(3){
+                width: 37rem;
+                height: 10vh;
+                background-color: rgb(255, 213, 0);
+                
+                & > i{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 2rem;
+                    border: 4px solid black;
+                    height: 12vh;
+                    width: 5rem;
+                    border-radius: 40px;
+                    background-color: rgb(255, 213, 0);
+
+                }
+           }
+        }
+        
+        & > .right{
+            display: flex;
+            width: 50%;
+
             & > img{
                 height: 100%;
                 width: 100%;
                 border: 4px solid black;
             }
         }
-        & > .right{
-            display: flex;
-            width: 50%;
-            height: 100%;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 3rem;
-            background-image: url(../img/pngwing.com\ \(3\).png) ;
-            background-position: center;
-            background-size: cover;
+    }
 
-            & > .container:nth-child(1){
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: yellow;
-                border-radius: 20px;
-                border: 3px solid black;
-                width: 20rem;
-                height: 10vh;
-                
-                & > p {
-                    font-size: 20px;
-                } 
-            }
+    & > a{
+        text-decoration: none;
 
-            & > .container:nth-child(2){
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 40rem;
-                height: 10vh;
-                background-color: yellow;
-                border-radius: 20px;
-                border: 3px solid black;
-            }
+    & > button{
+        display: flex;
+        width: 9rem;
+        height: 3rem;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: rgb(255, 213, 0);
+        font-weight: 900;
+        border: 3px solid black;
 
-            & > .container:nth-child(3){
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 30rem;
-                height: 10vh;
-                background-color: yellow;
-                border-radius: 20px;
-                border: 3px solid black;         
-           }
+        &:hover{
+            background-color: rgb(255, 213, 0);
         }
-}
-
-& > a{
-    text-decoration: none;
-& > button{
-    display: flex;
-    width: 10rem;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-}
-}
+    }
+    }
 }
 
 footer{
@@ -607,6 +668,7 @@ footer{
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 255, 108);
+    border-top: 3px solid black;
 }
 
 /* Responsive for smaller screens */
