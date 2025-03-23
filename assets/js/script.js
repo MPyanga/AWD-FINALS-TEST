@@ -1,179 +1,198 @@
-// // window.onload = function() {
-// //   document.getElementById("loginModal").style.display = "block";
-// // };
 
-// // Handle the form submission to check username and password
-// document.getElementById("loginform").onsubmit = function(event) {
-//   event.preventDefault(); // Prevent form from submitting
-
-//   // Get the username and password values
-//   const username = document.getElementById("username").value;
-//   const password = document.getElementById("password").value;
-
-//   let storedUsers = JSON.parse(localStorage.getItem("users")) || {};
-
-//   // Check if the credentials match
-//   if (username === "admin" && password === "123") {
-//       Swal.fire({
-//           title: "Login Successful!",
-//           text: "Welcome, Admin!",
-//           icon: "success",
-//           timer: 2000, // Auto-close after 2 seconds
-//           showConfirmButton: false
-//       });
-//      document.getElementById("loginModal").style.display = "none";
-
-//       // Delay the redirection by 2 seconds
-//       setTimeout(() => {
-//           window.location.href = "../../pages/Home-Page/index.html";
-//       }, 2000);
-
-//       return; // Stop further execution
-//   }
-
-//   if (username === "client" && password === "123") {
-//       Swal.fire({
-//           title: "Login Successful!",
-//           text: "Welcome, Client!",
-//           icon: "success",
-//           timer: 2000,
-//           showConfirmButton: false
-//       });
-      
-//       // Delay the redirection by 2 seconds
-//       setTimeout(() => {
-//           window.location.href = "../../pages/About-Page/index.html";
-//       }, 2000);
-
-//       return; // Stop further execution
-//   }
-
-//   // If neither condition is met, show an error message
-//   document.getElementById("errorMessage").style.display = "block";
-// };
-
-
-// document.getElementById("Create").addEventListener("click", function() {
-//   Swal.fire({
-//       title: "Create Account",
-//       html:
-//           `<input type="text" id="newUsername" class="swal2-input" placeholder="Username" required>
-//            <input type="password" id="newPassword" class="swal2-input" placeholder="Password" required>`,
-//       showCancelButton: true,
-//       confirmButtonText: "Register",
-//       cancelButtonText: "Cancel",
-//       preConfirm: () => {
-//           let newUsername = document.getElementById("newUsername").value;
-//           let newPassword = document.getElementById("newPassword").value;
-
-//           if (!newUsername || !newPassword) {
-//               Swal.showValidationMessage("All fields are required!");
-//           }
-
-//           return { newUsername, newPassword };
-//       }
-//   }).then((result) => {
-//       if (result.isConfirmed) {
-//           Swal.fire("Success!", "Your account has been created.", "success");
-//           // Here you can add logic to save the new account
-//       }
-//   });
-// });
-
-if (!localStorage.getItem("users")) {
-    localStorage.setItem("users", JSON.stringify({ admin: "123" }));
-}
-
-// Handle the form submission to check username and password
-
-document.getElementById("loginform").onsubmit = function(event) {
-    event.preventDefault(); // Prevent form from submitting
-
-    // Get the username and password values
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    // Retrieve stored accounts from local storage
-    let storedUsers = JSON.parse(localStorage.getItem("users")) || {};
-    if (username === "admin" && password === "123") {
-        // Swal.fire({
-        //     title: "Login Successful!",
-        //     text: "Welcome, Admin!",
-        //     icon: "success",
-        //     timer: 2000,
-        //     showConfirmButton: false
-        // });
-        document.getElementById("loader").style.display = "block"
-        document.getElementById("loginModal").style.display = "none";
-
-        // Redirect Admin to Home Page
-        setTimeout(() => {
-            window.location.href = document.getElementById("admin").href;
-        }, 2000);
-        return; // Stop further execution
-    } 
-    // Check if the entered credentials match stored ones
-    if (username in storedUsers && storedUsers[username] === password) {
-        Swal.fire({
-            title: "Login Successful!",
-            text: `Welcome, ${username}!`,
-            icon: "success",
-            timer: 2000,
-            showConfirmButton: false
-        });
-        setTimeout(() => {
-            window.location.href = document.getElementById("default").href;
-                  }, 2000);
-
-        document.getElementById("loginModal").style.display = "none";
-        return; // Stop further execution
-    }
-
-    // If neither condition is met, show an error message
-    document.getElementById("errorMessage").style.display = "block";
-};
-
-// Handle account creation
-document.getElementById("Create").addEventListener("click", function() {
-  
-    Swal.fire({
-        title: "Create Account",
-        html:
-            `<input type="text" id="newUsername" class="swal2-input" placeholder="Username" required>
-             <input type="password" id="newPassword" class="swal2-input" placeholder="Password" required>`,
-        showCancelButton: true,
-        confirmButtonText: "Register",
-        cancelButtonText: "Cancel",
-
-        preConfirm: () => {
-            let newUsername = document.getElementById("newUsername").value.trim();
-            let newPassword = document.getElementById("newPassword").value.trim();
-
-            if (!newUsername || !newPassword) {
-                Swal.showValidationMessage("All fields are required!");
-                return false;
+            // Get necessary elements
+            const hamburgerButton = document.getElementById("hamburger_icon");
+            const navLinks = document.getElementById("navlinks");
+            const icon = hamburgerButton.querySelector("i"); // Use optional chaining to prevent errors
+            const signOutButton = document.getElementById("signout");
+            const loginButton = document.getElementById("loginbutton");
+            const dropdown = document.getElementById("dropdown");
+            const modal = document.getElementById("loginModal");
+            const closeModalBtn = document.getElementById("closeModalBtn");
+            const loader = document.getElementById("loader");
+            const errorMessage = document.getElementById("errorMessage");
+            const createModal = document.getElementById("createModal");
+            const loginAccount = document.getElementById("loginAccount");
+            const createAccountBtn = document.getElementById("Create");
+            
+            // Navbar toggle
+            hamburgerButton.addEventListener("click", () => {
+                navLinks.classList.toggle("show");
+                icon.classList.toggle("fa-bars");
+                icon.classList.toggle("fa-xmark");
+            });
+            
+            // Handle sign out
+            signOutButton.addEventListener("click", function () {
+                Swal.fire({
+                    title: "Logged Out!",
+                    text: "You have successfully signed out.",
+                    icon: "success",
+                    timer: 2000,
+                    showConfirmButton: false,
+                });
+            
+                setTimeout(() => {
+                    localStorage.setItem("isLoggedIn", "false");
+                    localStorage.removeItem("userId");
+                    window.location.reload();
+                }, 2000);
+            
+            });
+            
+            // Handle login button appearance
+            if (!localStorage.getItem("isLoggedIn") || localStorage.getItem("isLoggedIn") === "false") {
+                loginButton.innerHTML = "LOGIN";
+                loginButton.style.width = "7rem";
+                loginButton.style.backgroundColor = "transparent";
+            
+                loginButton.addEventListener("click", function () {
+                    dropdown.style.display = "none";
+                    modal.style.display = "flex";
+                });
             }
-
-            // Retrieve stored accounts from local storage
-            let storedUsers = JSON.parse(localStorage.getItem("users")) || {};
-
-            // Check if the username already exists
-            if (newUsername in storedUsers) {
-                Swal.showValidationMessage("Username already exists!");
-                return false;
+            
+            // Modal close event
+            closeModalBtn.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+            
+            // Ensure user storage exists
+            if (!localStorage.getItem("users")) {
+                localStorage.setItem("users", JSON.stringify({ admin: "123" }));
             }
-
-            // Save the new account to local storage
-            storedUsers[newUsername] = newPassword;
-            localStorage.setItem("users", JSON.stringify(storedUsers));
-
-            return { newUsername, newPassword };
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire("Success!", "Your account has been created.", "success");
-            document.getElementById("username").value = "";
-            document.getElementById("password").value = "";
-        }
-    });
-});
+            
+            // Handle link redirection
+            function handleLinkClick(event, redirectUrl) {
+                event.preventDefault();
+                if (!localStorage.getItem("isLoggedIn") || localStorage.getItem("isLoggedIn") === "false") {
+                    modal.style.display = "flex";
+                } else {
+                    window.location.href = redirectUrl;
+                }
+            }
+            
+            // Get all links and attach event listeners
+            const links = [
+                { elementId: "about", href: "about.html" },
+                { elementId: "review", href: "review.html" },
+                { elementId: "event", href: "event.html" },
+                { elementId: "createEvent", href: "createEvent.html" },
+                { elementId: "gathering", href: "gathering.html" },
+            ];
+            
+            links.forEach(({ elementId, href }) => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.addEventListener("click", (event) => handleLinkClick(event, href));
+                }
+            });
+            
+            const API_URL = "https://demo-api-skills.vercel.app/api/EventOrganizer/users";
+            const group = "admin";
+            // Handle login form submission
+            document.getElementById("loginform").addEventListener("submit", function (event) {
+                event.preventDefault();
+                const username = document.getElementById("username").value.trim();
+                const password = document.getElementById("password").value.trim();
+                let storedUsers = JSON.parse(localStorage.getItem("users")) || {};
+            
+                axios.get(API_URL)
+                .then(response => {
+                    const users = response.data;
+                    const user = users.find(user => user.email === username && user.password === password );
+                    if (user ) {
+                        Swal.fire({
+                            title: "Login Successful!",
+                            text: `Welcome, ${username.split("@")[0]}!`,
+                            icon: "success",
+                            timer: 2000,
+                            showConfirmButton: false,
+                        });
+                        modal.style.display = "none";
+                        loader.style.display ="flex";
+                        localStorage.setItem("isLoggedIn", "true");
+                        localStorage.setItem("userId", user.id);
+            
+            
+                        setTimeout(() => {
+                            window.location.href = document.getElementById("default").href;
+                        }, 2000);
+                
+                        return;
+                    }
+                    if(username == "admin" && password == '123'){
+                        loader.style.display ="flex";
+                        modal.style.display = "none";
+                        setTimeout(() => {
+                            window.location.href = document.getElementById("admin").href;
+                        }, 2000);
+            
+                    } else {
+                        errorMessage.style.display = "flex";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            });
+            
+            // // Handle account creation (sign-up flow)
+            createAccountBtn.addEventListener("click", () => {
+                createModal.style.display = "block";
+                loginAccount.style.display = "none";
+            });
+            
+            document.getElementById("createform").addEventListener("submit", function (event) {
+                event.preventDefault();
+            
+                const fname = document.getElementById("fname").value;
+                const lname = document.getElementById("Lname").value;
+                const email = document.getElementById("createEmail").value;
+                const password = document.getElementById("createPassword").value;
+                const confirmPassword = document.getElementById("confirmPassword").value;
+                const errorMessage = document.getElementById("errorMessage");
+                
+                // Validate input fields
+                if (!fname || !lname || !email || !password || !confirmPassword) {
+                    errorMessage.textContent = "All fields are required.";
+                    errorMessage.style.display = "block";
+                    return;
+                }
+                
+                // Validate password match
+                if (password !== confirmPassword) {
+                    errorMessage.textContent = "Passwords do not match.";
+                    errorMessage.style.display = "block";
+                    return;
+                }
+            
+                // Hide error message if validation passes
+                errorMessage.style.display = "none";
+                
+                // Create user object
+                const userData = {
+                    name: `${fname} ${lname}`,
+                    email,
+                    password
+                };
+                
+                // Send POST request to API
+                axios.post(API_URL, userData)
+                    .then(response => {
+                        alert("Account created successfully!");
+                        document.getElementById("createform").reset(); // Clear the form
+                    })
+                    .catch(error => {
+                        errorMessage.textContent = "Error creating account. Please try again.";
+                        errorMessage.style.display = "block";
+                        console.error("Error:", error);
+                    });
+            });
+            
